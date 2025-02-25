@@ -91,6 +91,7 @@ export default function Home() {
                     className="px-6 py-2 text-black hover:text-black font-medium"
                 >
                     Admin Panel
+                    Admin Panel
                 </Link> */}
               <Link
                 href="/contact"
