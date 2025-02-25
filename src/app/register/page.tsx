@@ -48,7 +48,7 @@ export default function Register() {
         <div className="text-center mb-8">
           <Link href="/" className="inline-block">
             <Image
-              src="/adovo-logo.png"
+              src="/assets/img/adovo-logo.png"
               alt="ADOVO Logo"
               width={80}
               height={80}

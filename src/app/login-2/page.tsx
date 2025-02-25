@@ -33,7 +33,7 @@ export default function Login() {
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 <Link href="/" className="flex justify-center transform hover:scale-105 transition-transform duration-200">
                     <Image
-                        src="/adovo-logo.png"
+                        src="/assets/img/adovo-logo.png"
                         alt="ADOVO Logo"
                         width={80}
                         height={80}

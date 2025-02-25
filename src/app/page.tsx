@@ -45,7 +45,7 @@ export default function Home() {
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center">
         <Image
-                src="/adovo-logo.png"
+                src="/assets/img/adovo-logo.png"
                 alt="ADOVO Logo"
                 width={60}
                 height={60}
@@ -86,14 +86,14 @@ export default function Home() {
                 About Us
               </Link>
 
-                <Link
+                {/* <Link
                     href="/about"
                     className="px-6 py-2 text-black hover:text-black font-medium"
                 >
                     Admin Panel
-                </Link>
+                </Link> */}
               <Link
-                href="/admin"
+                href="/contact"
                 className="px-6 py-2 text-black hover:text-black font-medium"
               >
                 Contact

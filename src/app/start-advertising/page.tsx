@@ -74,7 +74,7 @@ export default function StartAdvertising() {
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center">
               <Image
-                src="/adovo-logo.png"
+                src="/assets/img/adovo-logo.png"
                 alt="ADOVO Logo"
                 width={40}
                 height={40}
