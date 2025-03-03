@@ -68,6 +68,7 @@ jobs:
             eslint: { ignoreDuringBuilds: true },
             output: 'export',
             basePath: '/adovo-fe',
+            assetPrefix: '/adovo-fe',
             images: { unoptimized: true },
             trailingSlash: true
           };" > next.config.js
