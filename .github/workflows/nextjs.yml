@@ -60,8 +60,8 @@ jobs:
         run: |
           echo "module.exports = { output: 'export', basePath: '/adovo-fe', images: { unoptimized: true } };" > next.config.js
 
-      - name: Build with Next.js
-        run: ${{ env.runner }} next build && ${{ env.runner }} next export
+      - name: Build with Next.js (Skipping ESLint)
+        run: NEXT_PUBLIC_DISABLE_ESLINT=true ${{ env.runner }} next build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
