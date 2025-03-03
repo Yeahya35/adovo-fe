@@ -7,6 +7,7 @@ const nextConfig = {
         ignoreDuringBuilds: true,
     },
     output: 'export',
+    basePath: '',
     images: {
         unoptimized: true, // Since GitHub Pages doesn't support Next.js Image Optimization
     },
