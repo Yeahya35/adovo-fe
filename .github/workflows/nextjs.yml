@@ -77,7 +77,7 @@ jobs:
           };" > next.config.js
 
       - name: Build with Next.js (Skipping ESLint)
-          run: NEXT_PUBLIC_DISABLE_ESLINT=true NEXT_PUBLIC_BASE_PATH=/adovo-fe NEXT_PUBLIC_ASSETS_PATH=/adovo-fe/assets ${{ env.runner }} next build
+        run: NEXT_PUBLIC_DISABLE_ESLINT=true NEXT_PUBLIC_BASE_PATH=/adovo-fe NEXT_PUBLIC_ASSETS_PATH=/adovo-fe/assets ${{ env.runner }} next build
 
 
       - name: Upload artifact
