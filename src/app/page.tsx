@@ -1,6 +1,6 @@
 'use client';
 
-import {useEffect, useState} from 'react';
+import {useEffect,  useState} from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import {useRouter} from 'next/navigation';
@@ -21,6 +21,7 @@ export default function Home() {
     const router = useRouter();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userName, setUserName] = useState('');
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const user = localStorage.getItem('user');
@@ -47,53 +48,77 @@ export default function Home() {
                             <Image
                                 src="/assets/img/adovo-logo.png"
                                 alt="ADOVO Logo"
-                                width={60}
-                                height={60}
+                                width={50}
+                                height={50}
                                 className="transform hover:scale-110 transition-transform duration-300 drop-shadow-md"
                             />
                         </Link>
-                        <div className="flex items-center space-x-4" >
+                        {/* Mobile menu button */}
+                        <div className="md:hidden">
+                            <button
+                                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                                className="text-black p-2"
+                            >
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
+                                </svg>
+                            </button>
+                        </div>
+                        {/* Desktop menu */}
+                        <div className="hidden md:flex items-center space-x-4">
+                            {/* Existing navigation items */}
                             {isLoggedIn ? (
                                 <>
-                                    <Link
-                                        href="/dashboard"
-                                        className="px-6 py-2 text-black hover:text-black font-medium"
-                                    >
+                                    <Link href="/dashboard" className="px-6 py-2 text-black hover:text-black font-medium">
                                         Dashboard
                                     </Link>
                                     <span className="text-black">Welcome, {userName}</span>
-                                    <button
-                                        onClick={handleLogout}
-                                        className="px-6 py-2 text-black hover:text-black font-medium"
-                                    >
+                                    <button onClick={handleLogout} className="px-6 py-2 text-black hover:text-black font-medium">
                                         Sign out
                                     </button>
                                 </>
                             ) : (
-                                <>
-                                    <Link
-                                        href="/login"
-                                        className="px-6 py-2 bg-yellow-400 text-black rounded-full hover:bg-yellow-500 transition-colors font-medium"
-                                    >
-                                        Log in
-                                    </Link>
-                                </>
+                                <Link href="/login" className="px-6 py-2 bg-yellow-400 text-black rounded-full hover:bg-yellow-500 transition-colors font-medium">
+                                    Log in
+                                </Link>
                             )}
-                            <Link
-                                href="/about"
-                                className="px-6 py-2 text-black hover:text-black font-medium"
-                            >
+                            <Link href="/about" className="px-6 py-2 text-black hover:text-black font-medium">
                                 About Us
                             </Link>
-                            <Link
-                                href="/contact"
-                                className="px-6 py-2 text-black hover:text-black font-medium"
-                            >
+                            <Link href="/contact" className="px-6 py-2 text-black hover:text-black font-medium">
                                 Contact
                             </Link>
                         </div>
                     </div>
                 </div>
+                {/* Mobile menu */}
+                {isMobileMenuOpen && (
+                    <div className="md:hidden bg-white border-t">
+                        <div className="px-2 pt-2 pb-3 space-y-1">
+                            {isLoggedIn ? (
+                                <>
+                                    <Link href="/dashboard" className="block px-3 py-2 text-black hover:bg-gray-50">
+                                        Dashboard
+                                    </Link>
+                                    <span className="block px-3 py-2 text-black">Welcome, {userName}</span>
+                                    <button onClick={handleLogout} className="block w-full text-left px-3 py-2 text-black hover:bg-gray-50">
+                                        Sign out
+                                    </button>
+                                </>
+                            ) : (
+                                <Link href="/login" className="block px-3 py-2 text-black hover:bg-gray-50">
+                                    Log in
+                                </Link>
+                            )}
+                            <Link href="/about" className="block px-3 py-2 text-black hover:bg-gray-50">
+                                About Us
+                            </Link>
+                            <Link href="/contact" className="block px-3 py-2 text-black hover:bg-gray-50">
+                                Contact
+                            </Link>
+                        </div>
+                    </div>
+                )}
             </nav>
 
             {isLoggedIn ? (
