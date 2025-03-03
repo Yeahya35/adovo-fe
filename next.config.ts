@@ -1,17 +1,14 @@
-/**
- * @type {import('next').NextConfig}
- */
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
     eslint: {
         ignoreDuringBuilds: true,
     },
-    output: 'export',
-    basePath: '',
-    assetPrefix: "",
+    output: "export",
+    basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
+    assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || "",
     images: {
-        unoptimized: true, // Since GitHub Pages doesn't support Next.js Image Optimization
+        unoptimized: true,
     },
 };
 
-module.exports = nextConfig
+module.exports = nextConfig;
