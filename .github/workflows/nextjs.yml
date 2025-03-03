@@ -61,7 +61,7 @@ jobs:
 
       - name: Configure Next.js for GitHub Pages
         run: |
-          echo "module.exports = {  eslint: { ignoreDuringBuilds: true}, output: 'export', basePath: '/adovo-fe', images: { unoptimized: true } };" > next.config.js
+          echo "module.exports = { eslint: { ignoreDuringBuilds: true }, output: 'export', basePath: process.env.NEXT_PUBLIC_BASE_PATH || '', assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '', images: { unoptimized: true } };" > next.config.js
 
       - name: Build with Next.js (Skipping ESLint)
         run: NEXT_PUBLIC_DISABLE_ESLINT=true ${{ env.runner }} next build
