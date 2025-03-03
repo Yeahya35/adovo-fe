@@ -74,7 +74,7 @@ jobs:
           };" > next.config.js
 
       - name: Build with Next.js
-        run: NEXT_PUBLIC_BASE_PATH=${{ steps.setup_pages.outputs.base_path }} NEXT_PUBLIC_ASSETS_PATH=${{ steps.setup_pages.outputs.base_path }}/assets ${{ env.runner }} next build && ${{ env.runner }} next export
+        run: NEXT_PUBLIC_BASE_PATH=${{ steps.setup_pages.outputs.base_path }} NEXT_PUBLIC_ASSETS_PATH=${{ steps.setup_pages.outputs.base_path }}/assets ${{ env.runner }} next build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
