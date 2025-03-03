@@ -73,7 +73,7 @@ export default function About() {
                 <div className="text-center">
                   <div className="w-32 h-32 mx-auto mb-3 rounded-full bg-gray-200 overflow-hidden">
                     <Image
-                      src="/team/kaan.jpg"
+                      src="/assets/members/mehmet-kaan.jpeg"
                       alt="Mehmet Kaan Yıldız"
                       width={128}
                       height={128}
@@ -87,7 +87,7 @@ export default function About() {
                 <div className="text-center">
                   <div className="w-32 h-32 mx-auto mb-3 rounded-full bg-gray-200 overflow-hidden">
                     <Image
-                      src="/team/deniz-dogru.jpg"
+                      src="/assets/members/deniz-dogru.jpeg"
                       alt="Deniz Doğru"
                       width={128}
                       height={128}
@@ -101,7 +101,7 @@ export default function About() {
                 <div className="text-center">
                   <div className="w-32 h-32 mx-auto mb-3 rounded-full bg-gray-200 overflow-hidden">
                     <Image
-                      src="/team/eren.jpg"
+                      src="/assets/members/eren-altay.jpeg"
                       alt="Eren Altay Mahmutoğlu"
                       width={128}
                       height={128}
@@ -115,7 +115,7 @@ export default function About() {
                 <div className="text-center">
                   <div className="w-32 h-32 mx-auto mb-3 rounded-full bg-gray-200 overflow-hidden">
                     <Image
-                      src="/team/cagla.jpg"
+                      src="/assets/members/cagla-burcu-ozeren.jpeg"
                       alt="Çağla Burcu Özeren"
                       width={128}
                       height={128}
@@ -129,7 +129,7 @@ export default function About() {
                 <div className="text-center">
                   <div className="w-32 h-32 mx-auto mb-3 rounded-full bg-gray-200 overflow-hidden">
                     <Image
-                      src="/team/berke.jpg"
+                      src="/assets/members/deniz-saglam.jpeg"
                       alt="Deniz Berke Sağlam"
                       width={128}
                       height={128}
@@ -143,7 +143,7 @@ export default function About() {
                 <div className="text-center">
                   <div className="w-32 h-32 mx-auto mb-3 rounded-full bg-gray-200 overflow-hidden">
                     <Image
-                      src="/team/mert.jpg"
+                      src="/assets/members/mert-budur.jpeg"
                       alt="Mert Budur"
                       width={128}
                       height={128}
@@ -157,7 +157,7 @@ export default function About() {
                 <div className="text-center">
                   <div className="w-32 h-32 mx-auto mb-3 rounded-full bg-gray-200 overflow-hidden">
                     <Image
-                      src="/team/omerhan.jpg"
+                      src="/assets/members/omerhan-tacyildiz.png"
                       alt="Ömerhan Taçıldız"
                       width={128}
                       height={128}
