@@ -22,40 +22,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_ENV
-            echo "install_cmd=yarn install --frozen-lockfile" >> $GITHUB_ENV
-            echo "runner=yarn" >> $GITHUB_ENV
-            echo "cache_dir=$(yarn cache dir)" >> $GITHUB_ENV
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: ${{ env.manager }}
+          cache: yarn
 
       - name: Install dependencies
-        run: ${{ env.install_cmd }}
+        run: yarn install --frozen-lockfile
 
       - name: Setup Pages
         id: setup_pages
         uses: actions/configure-pages@v5
-
-      - name: Restore cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            .next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-
 
       - name: Set up environment variables
         run: |
@@ -67,14 +45,17 @@ jobs:
           echo "module.exports = {
             eslint: { ignoreDuringBuilds: true },
             output: 'export',
-            basePath: '/adovo-fe',
-            assetPrefix: '/adovo-fe',
+            basePath: process.env.NEXT_PUBLIC_BASE_PATH,
+            assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH,
             images: { unoptimized: true },
             trailingSlash: true
           };" > next.config.js
 
       - name: Build with Next.js
-        run: NEXT_PUBLIC_BASE_PATH=${{ steps.setup_pages.outputs.base_path }} NEXT_PUBLIC_ASSETS_PATH=${{ steps.setup_pages.outputs.base_path }}/assets ${{ env.runner }} next build
+        run: NEXT_PUBLIC_BASE_PATH=${{ steps.setup_pages.outputs.base_path }} NEXT_PUBLIC_ASSETS_PATH=${{ steps.setup_pages.outputs.base_path }}/assets yarn next build && yarn next export
+
+      - name: Add .nojekyll file
+        run: touch out/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
