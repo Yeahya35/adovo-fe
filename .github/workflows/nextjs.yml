@@ -52,7 +52,7 @@ jobs:
           };" > next.config.js
 
       - name: Build with Next.js
-        run: NEXT_PUBLIC_BASE_PATH=${{ steps.setup_pages.outputs.base_path }} NEXT_PUBLIC_ASSETS_PATH=${{ steps.setup_pages.outputs.base_path }}/assets yarn next build && yarn next export
+        run: NEXT_PUBLIC_BASE_PATH=${{ steps.setup_pages.outputs.base_path }} NEXT_PUBLIC_ASSETS_PATH=${{ steps.setup_pages.outputs.base_path }}/assets yarn next build
 
       - name: Add .nojekyll file
         run: touch out/.nojekyll
