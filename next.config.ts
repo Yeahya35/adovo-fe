@@ -2,7 +2,7 @@
 const nextConfig = {
   output: 'export',
   basePath: '/adovo-fe',
-  assetPrefix: '/adovo-fe'
+  assetPrefix: '/adovo-fe',
   images: { unoptimized: true },
   eslint: { ignoreDuringBuilds: true },
   trailingSlash: true,
