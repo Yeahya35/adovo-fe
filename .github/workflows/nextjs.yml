@@ -55,6 +55,9 @@ jobs:
 
       - name: Install dependencies
         run: ${{ env.install_cmd }}
+        
+      - name: Copy Production Env
+        run: cp .env.production .env
 
       - name: Configure Next.js for GitHub Pages
         run: |
