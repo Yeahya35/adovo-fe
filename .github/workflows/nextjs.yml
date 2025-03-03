@@ -28,10 +28,12 @@ jobs:
             echo "manager=yarn" >> $GITHUB_ENV
             echo "install_cmd=yarn install --frozen-lockfile" >> $GITHUB_ENV
             echo "runner=yarn" >> $GITHUB_ENV
+            echo "cache_dir=$(yarn cache dir)" >> $GITHUB_ENV
           elif [ -f "package-lock.json" ]; then
             echo "manager=npm" >> $GITHUB_ENV
             echo "install_cmd=npm ci" >> $GITHUB_ENV
             echo "runner=npx --no-install" >> $GITHUB_ENV
+            echo "cache_dir=$(npm config get cache)" >> $GITHUB_ENV
           else
             echo "Unable to determine package manager"
             exit 1
@@ -46,17 +48,16 @@ jobs:
       - name: Restore cache
         uses: actions/cache@v4
         with:
-          path: .next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('package-lock.json', 'yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          path: ${{ env.cache_dir }}
+          key: ${{ runner.os }}-${{ env.manager }}-${{ hashFiles('package-lock.json', 'yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('package-lock.json', 'yarn.lock') }}-
+            ${{ runner.os }}-${{ env.manager }}-
 
       - name: Install dependencies
         run: ${{ env.install_cmd }}
 
       - name: Configure Next.js for GitHub Pages
         run: |
-          echo "Updating next.config.js for GitHub Pages..."
           echo "module.exports = { output: 'export', basePath: '/adovo-fe', images: { unoptimized: true } };" > next.config.js
 
       - name: Build with Next.js
