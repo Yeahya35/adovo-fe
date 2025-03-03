@@ -2,7 +2,8 @@ name: Deploy Next.js site to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -13,10 +14,6 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: false
-
-env:
-  NEXT_PUBLIC_BASE_PATH: "/adovo-fe"
-  NEXT_PUBLIC_ASSETS_PATH: "/adovo-fe/assets"
 
 jobs:
   build:
@@ -33,11 +30,6 @@ jobs:
             echo "install_cmd=yarn install --frozen-lockfile" >> $GITHUB_ENV
             echo "runner=yarn" >> $GITHUB_ENV
             echo "cache_dir=$(yarn cache dir)" >> $GITHUB_ENV
-          elif [ -f "package-lock.json" ]; then
-            echo "manager=npm" >> $GITHUB_ENV
-            echo "install_cmd=npm ci" >> $GITHUB_ENV
-            echo "runner=npx --no-install" >> $GITHUB_ENV
-            echo "cache_dir=$(npm config get cache)" >> $GITHUB_ENV
           else
             echo "Unable to determine package manager"
             exit 1
@@ -49,21 +41,26 @@ jobs:
           node-version: 20
           cache: ${{ env.manager }}
 
-      - name: Restore cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.cache_dir }}
-          key: ${{ runner.os }}-${{ env.manager }}-${{ hashFiles('package-lock.json', 'yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ env.manager }}-
-
       - name: Install dependencies
         run: ${{ env.install_cmd }}
 
+      - name: Setup Pages
+        id: setup_pages
+        uses: actions/configure-pages@v5
+
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            .next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-
+
       - name: Set up environment variables
         run: |
-          echo "NEXT_PUBLIC_BASE_PATH=/adovo-fe" >> $GITHUB_ENV
-          echo "NEXT_PUBLIC_ASSETS_PATH=/adovo-fe/assets" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_BASE_PATH=${{ steps.setup_pages.outputs.base_path }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_ASSETS_PATH=${{ steps.setup_pages.outputs.base_path }}/assets" >> $GITHUB_ENV
 
       - name: Configure Next.js for GitHub Pages
         run: |
@@ -76,14 +73,13 @@ jobs:
             trailingSlash: true
           };" > next.config.js
 
-      - name: Build with Next.js (Skipping ESLint)
-        run: NEXT_PUBLIC_DISABLE_ESLINT=true NEXT_PUBLIC_BASE_PATH=/adovo-fe NEXT_PUBLIC_ASSETS_PATH=/adovo-fe/assets ${{ env.runner }} next build
-
+      - name: Build with Next.js
+        run: NEXT_PUBLIC_BASE_PATH=${{ steps.setup_pages.outputs.base_path }} NEXT_PUBLIC_ASSETS_PATH=${{ steps.setup_pages.outputs.base_path }}/assets ${{ env.runner }} next build && ${{ env.runner }} next export
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: out
+          path: ./out
 
   deploy:
     environment:
