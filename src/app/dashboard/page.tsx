@@ -30,7 +30,7 @@ export default function Dashboard() {
             <div className="flex items-center">
               <Link href="/dashboard">
                 <Image
-                  src="/adovo-logo.png"
+                  src="/assets/img/adovo-logo.png"
                   alt="ADOVO Logo"
                   width={40}
                   height={40}
