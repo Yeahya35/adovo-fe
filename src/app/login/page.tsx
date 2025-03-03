@@ -58,7 +58,7 @@ export default function LoginPage() {
                                 height={50}
                             />
                         </Link>
-                        <a href="#"> Adovo Inc. </a>
+                        <a href="#"> Adovo </a>
                     </div>
                 </div>
                 <div className="flex flex-1 items-center justify-center">
