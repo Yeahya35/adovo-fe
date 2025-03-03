@@ -251,6 +251,176 @@ export default function Home() {
                 </div>
             </section>
 
+            {/* How It Works Section */}
+            <section className="py-20 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <h2 className="text-3xl font-bold text-black text-center mb-4">How ADOVO Works</h2>
+                    <p className="text-lg text-gray-600 text-center mb-16 max-w-3xl mx-auto">
+                        Our innovative platform makes it easy to reach your target audience through dynamic, location-based advertising
+                    </p>
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <Step
+                            number="1"
+                            title="Choose Your Location"
+                            description="Select specific districts in Ankara where you want your ads to appear"
+                        />
+                        <Step
+                            number="2"
+                            title="Upload Your Content"
+                            description="Add your advertisement content and customize it for maximum impact"
+                        />
+                        <Step
+                            number="3"
+                            title="Set Schedule"
+                            description="Define when and how long you want your campaign to run"
+                        />
+                    </div>
+                </div>
+            </section>
+
+            {/* Benefits Section */}
+            <section className="py-20 bg-white">
+                <div className="container mx-auto px-4">
+                    <h2 className="text-3xl font-bold text-black text-center mb-16">Why Digital Taxi Advertising?</h2>
+                    <div className="grid md:grid-cols-2 gap-12">
+                        <div className="space-y-6">
+                            <div className="flex items-start space-x-4">
+                                <div className="flex-shrink-0">
+                                    <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                                        <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-semibold mb-2 text-black">High Visibility</h3>
+                                    <p className="text-gray-600">Our taxi-top displays are visible 24/7, reaching thousands of potential customers daily in high-traffic areas</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start space-x-4">
+                                <div className="flex-shrink-0">
+                                    <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                                        <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-semibold mb-2 text-black">Dynamic Content</h3>
+                                    <p className="text-gray-600">Change your advertisements based on location, time of day, or special events to maximize relevance</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="space-y-6">
+                            <div className="flex items-start space-x-4">
+                                <div className="flex-shrink-0">
+                                    <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                                        <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-semibold mb-2 text-black">Cost-Effective</h3>
+                                    <p className="text-gray-600">More affordable than traditional billboard advertising with better targeting capabilities</p>
+                                </div>
+                            </div>
+                            
+                            {/* New subsection */}
+                            <div className="flex items-start space-x-4">
+                                <div className="flex-shrink-0">
+                                    <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                                        <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-semibold mb-2 text-black">Targeted Reach</h3>
+                                    <p className="text-gray-600">Connect with your audience in specific neighborhoods and during key times when they're most likely to engage</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Coverage Section */}
+            <section className="py-20 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <h2 className="text-3xl font-bold text-black text-center mb-4">Ankara Taxi Advertising Impact</h2>
+                    <p className="text-lg text-gray-600 text-center mb-16 max-w-3xl mx-auto">
+                        With over 7,500 licensed taxis in Ankara, our platform offers unprecedented reach across the city
+                    </p>
+                    <div className="grid md:grid-cols-4 gap-8 text-center">
+                        <div className="p-6 bg-white rounded-xl shadow-sm">
+                            <h3 className="text-4xl font-bold text-yellow-400 mb-2">7.5K+</h3>
+                            <p className="text-gray-600">Licensed Taxis in Ankara</p>
+                        </div>
+                        <div className="p-6 bg-white rounded-xl shadow-sm">
+                            <h3 className="text-4xl font-bold text-yellow-400 mb-2">5.6M</h3>
+                            <p className="text-gray-600">Ankara Population</p>
+                        </div>
+                        <div className="p-6 bg-white rounded-xl shadow-sm">
+                            <h3 className="text-4xl font-bold text-yellow-400 mb-2">150K+</h3>
+                            <p className="text-gray-600">Daily Taxi Rides</p>
+                        </div>
+                        <div className="p-6 bg-white rounded-xl shadow-sm">
+                            <h3 className="text-4xl font-bold text-yellow-400 mb-2">18+</h3>
+                            <p className="text-gray-600">Hours Active Daily</p>
+                        </div>
+                    </div>
+                    <div className="mt-16 grid md:grid-cols-2 gap-8">
+                        <div className="bg-white p-8 rounded-xl shadow-sm">
+                            <h3 className="text-xl font-semibold mb-4 text-black">Peak Hours Coverage</h3>
+                            <ul className="space-y-3 text-gray-600">
+                                <li className="flex items-center">
+                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    Morning Rush: 07:00 - 10:00
+                                </li>
+                                <li className="flex items-center">
+                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    Lunch Hours: 12:00 - 14:00
+                                </li>
+                                <li className="flex items-center">
+                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    Evening Rush: 17:00 - 20:00
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="bg-white p-8 rounded-xl shadow-sm">
+                            <h3 className="text-xl font-semibold mb-4 text-black">Key Areas Covered</h3>
+                            <ul className="space-y-3 text-gray-600">
+                                <li className="flex items-center">
+                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    Business Districts: Kızılay, Çankaya
+                                </li>
+                                <li className="flex items-center">
+                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    Shopping Areas: Tunalı Hilmi, Bahçelievler
+                                </li>
+                                <li className="flex items-center">
+                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    Transportation Hubs: AŞTİ, Train Station
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* CTA Section */}
             <section className="relative py-20 overflow-hidden">
                 {/* Video Background */}
@@ -260,6 +430,11 @@ export default function Home() {
                         loop
                         muted
                         playsInline
+                        ref={(el) => {
+                            if (el) {
+                                el.playbackRate = 1.5; // Adjust this value to control speed (1.5 = 50% faster)
+                            }
+                        }}
                         className="w-full h-full object-cover"
                     >
                         <source src="/background.mp4" type="video/mp4"/>
