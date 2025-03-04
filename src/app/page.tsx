@@ -36,7 +36,9 @@ export default function Home() {
         localStorage.removeItem('user');
         setIsLoggedIn(false);
         router.push('/');
-    };
+    }
+
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-white to-yellow-50">
@@ -46,7 +48,7 @@ export default function Home() {
                     <div className="flex justify-between items-center h-16">
                         <Link href="/" className="flex items-center">
                             <Image
-                                src="/assets/img/adovo-logo.png"
+                                src={`${basePath}/assets/img/adovo-logo.png`}
                                 alt="ADOVO Logo"
                                 width={50}
                                 height={50}
@@ -197,7 +199,7 @@ export default function Home() {
                                 className="absolute inset-0 w-full h-full object-cover"
                                 style={{ objectFit: 'cover' }}
                             >
-                                <source src="/assets/videos/adovo-intro.mp4" type="video/mp4"/>
+                                <source src={`${basePath}/assets/videos/adovo-intro.mp4`} type="video/mp4"/>
                                 Your browser does not support the video tag.
                             </video>
                             {/* Dark overlay for better text readability */}
