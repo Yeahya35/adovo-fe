@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {useRouter} from 'next/navigation';
 
+
 interface FeatureCardProps {
     title: string;
     description: string;
@@ -32,6 +33,8 @@ export default function Home() {
         }
     }, []);
 
+    const { basePath } = useRouter();
+
     const handleLogout = () => {
         localStorage.removeItem('user');
         setIsLoggedIn(false);
@@ -46,7 +49,7 @@ export default function Home() {
                     <div className="flex justify-between items-center h-16">
                         <Link href="/" className="flex items-center">
                             <Image
-                                src="/assets/img/adovo-logo.png"
+                                src={`${basePath}/assets/img/adovo-logo.png`}
                                 alt="ADOVO Logo"
                                 width={50}
                                 height={50}
