@@ -1,6 +1,6 @@
 'use client';
 
-import {useEffect,  useState} from 'react';
+import {useEffect, useState} from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import {useRouter} from 'next/navigation';
@@ -33,7 +33,6 @@ export default function Home() {
         }
     }, []);
 
-    const { basePath } = useRouter();
 
     const handleLogout = () => {
         localStorage.removeItem('user');
@@ -65,7 +64,8 @@ export default function Home() {
                                 className="text-black p-2"
                             >
                                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                          d="M4 6h16M4 12h16M4 18h16"/>
                                 </svg>
                             </button>
                         </div>
@@ -74,16 +74,19 @@ export default function Home() {
                             {/* Existing navigation items */}
                             {isLoggedIn ? (
                                 <>
-                                    <Link href="/dashboard" className="px-6 py-2 text-black hover:text-black font-medium">
+                                    <Link href="/dashboard"
+                                          className="px-6 py-2 text-black hover:text-black font-medium">
                                         Dashboard
                                     </Link>
                                     <span className="text-black">Welcome, {userName}</span>
-                                    <button onClick={handleLogout} className="px-6 py-2 text-black hover:text-black font-medium">
+                                    <button onClick={handleLogout}
+                                            className="px-6 py-2 text-black hover:text-black font-medium">
                                         Sign out
                                     </button>
                                 </>
                             ) : (
-                                <Link href="/login" className="px-6 py-2 bg-yellow-400 text-black rounded-full hover:bg-yellow-500 transition-colors font-medium">
+                                <Link href="/login"
+                                      className="px-6 py-2 bg-yellow-400 text-black rounded-full hover:bg-yellow-500 transition-colors font-medium">
                                     Log in
                                 </Link>
                             )}
@@ -106,7 +109,8 @@ export default function Home() {
                                         Dashboard
                                     </Link>
                                     <span className="block px-3 py-2 text-black">Welcome, {userName}</span>
-                                    <button onClick={handleLogout} className="block w-full text-left px-3 py-2 text-black hover:bg-gray-50">
+                                    <button onClick={handleLogout}
+                                            className="block w-full text-left px-3 py-2 text-black hover:bg-gray-50">
                                         Sign out
                                     </button>
                                 </>
@@ -200,7 +204,7 @@ export default function Home() {
                                 muted
                                 playsInline
                                 className="absolute inset-0 w-full h-full object-cover"
-                                style={{ objectFit: 'cover' }}
+                                style={{objectFit: 'cover'}}
                             >
                                 <source src={`${basePath}/assets/videos/adovo-intro.mp4`} type="video/mp4"/>
                                 Your browser does not support the video tag.
@@ -210,12 +214,15 @@ export default function Home() {
                         </div>
 
                         {/* Content */}
-                        <div className="relative flex flex-col justify-center items-center text-center h-full z-10 px-4">
+                        <div
+                            className="relative flex flex-col justify-center items-center text-center h-full z-10 px-4">
                             <h1 className="text-5xl sm:text-7xl font-bold text-white mb-6 animate-fade-in">
-                                Transform Your <span className="text-yellow-500">Advertising</span> with Location-Based Taxi Displays
+                                Transform Your <span className="text-yellow-500">Advertising</span> with Location-Based
+                                Taxi Displays
                             </h1>
                             <p className="text-xl text-white mb-8 max-w-3xl">
-                                Reach your target audience where they are with ADOVO's dynamic taxi-top advertising platform in Ankara
+                                Reach your target audience where they are with ADOVO's dynamic taxi-top advertising
+                                platform in Ankara
                             </p>
                             <div className="flex gap-6">
                                 <Link
@@ -286,7 +293,8 @@ export default function Home() {
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold text-black text-center mb-4">How ADOVO Works</h2>
                     <p className="text-lg text-gray-600 text-center mb-16 max-w-3xl mx-auto">
-                        Our innovative platform makes it easy to reach your target audience through dynamic, location-based advertising
+                        Our innovative platform makes it easy to reach your target audience through dynamic,
+                        location-based advertising
                     </p>
                     <div className="grid md:grid-cols-3 gap-8">
                         <Step
@@ -316,58 +324,74 @@ export default function Home() {
                         <div className="space-y-6">
                             <div className="flex items-start space-x-4">
                                 <div className="flex-shrink-0">
-                                    <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
-                                        <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                    <div
+                                        className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                                        <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor"
+                                             viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                                  d="M5 13l4 4L19 7"/>
                                         </svg>
                                     </div>
                                 </div>
                                 <div>
                                     <h3 className="text-xl font-semibold mb-2 text-black">High Visibility</h3>
-                                    <p className="text-gray-600">Our taxi-top displays are visible 24/7, reaching thousands of potential customers daily in high-traffic areas</p>
+                                    <p className="text-gray-600">Our taxi-top displays are visible 24/7, reaching
+                                        thousands of potential customers daily in high-traffic areas</p>
                                 </div>
                             </div>
                             <div className="flex items-start space-x-4">
                                 <div className="flex-shrink-0">
-                                    <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
-                                        <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                    <div
+                                        className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                                        <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor"
+                                             viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                                  d="M5 13l4 4L19 7"/>
                                         </svg>
                                     </div>
                                 </div>
                                 <div>
                                     <h3 className="text-xl font-semibold mb-2 text-black">Dynamic Content</h3>
-                                    <p className="text-gray-600">Change your advertisements based on location, time of day, or special events to maximize relevance</p>
+                                    <p className="text-gray-600">Change your advertisements based on location, time of
+                                        day, or special events to maximize relevance</p>
                                 </div>
                             </div>
                         </div>
                         <div className="space-y-6">
                             <div className="flex items-start space-x-4">
                                 <div className="flex-shrink-0">
-                                    <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
-                                        <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                    <div
+                                        className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                                        <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor"
+                                             viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                                  d="M5 13l4 4L19 7"/>
                                         </svg>
                                     </div>
                                 </div>
                                 <div>
                                     <h3 className="text-xl font-semibold mb-2 text-black">Cost-Effective</h3>
-                                    <p className="text-gray-600">More affordable than traditional billboard advertising with better targeting capabilities</p>
+                                    <p className="text-gray-600">More affordable than traditional billboard advertising
+                                        with better targeting capabilities</p>
                                 </div>
                             </div>
-                            
+
                             {/* New subsection */}
                             <div className="flex items-start space-x-4">
                                 <div className="flex-shrink-0">
-                                    <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
-                                        <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                    <div
+                                        className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                                        <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor"
+                                             viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                                  d="M5 13l4 4L19 7"/>
                                         </svg>
                                     </div>
                                 </div>
                                 <div>
                                     <h3 className="text-xl font-semibold mb-2 text-black">Targeted Reach</h3>
-                                    <p className="text-gray-600">Connect with your audience in specific neighborhoods and during key times when they're most likely to engage</p>
+                                    <p className="text-gray-600">Connect with your audience in specific neighborhoods
+                                        and during key times when they're most likely to engage</p>
                                 </div>
                             </div>
                         </div>
@@ -380,7 +404,8 @@ export default function Home() {
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold text-black text-center mb-4">Ankara Taxi Advertising Impact</h2>
                     <p className="text-lg text-gray-600 text-center mb-16 max-w-3xl mx-auto">
-                        With over 7,500 licensed taxis in Ankara, our platform offers unprecedented reach across the city
+                        With over 7,500 licensed taxis in Ankara, our platform offers unprecedented reach across the
+                        city
                     </p>
                     <div className="grid md:grid-cols-4 gap-8 text-center">
                         <div className="p-6 bg-white rounded-xl shadow-sm">
@@ -405,20 +430,26 @@ export default function Home() {
                             <h3 className="text-xl font-semibold mb-4 text-black">Peak Hours Coverage</h3>
                             <ul className="space-y-3 text-gray-600">
                                 <li className="flex items-center">
-                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor"
+                                         viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                              d="M5 13l4 4L19 7"/>
                                     </svg>
                                     Morning Rush: 07:00 - 10:00
                                 </li>
                                 <li className="flex items-center">
-                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor"
+                                         viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                              d="M5 13l4 4L19 7"/>
                                     </svg>
                                     Lunch Hours: 12:00 - 14:00
                                 </li>
                                 <li className="flex items-center">
-                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor"
+                                         viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                              d="M5 13l4 4L19 7"/>
                                     </svg>
                                     Evening Rush: 17:00 - 20:00
                                 </li>
@@ -428,20 +459,26 @@ export default function Home() {
                             <h3 className="text-xl font-semibold mb-4 text-black">Key Areas Covered</h3>
                             <ul className="space-y-3 text-gray-600">
                                 <li className="flex items-center">
-                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor"
+                                         viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                              d="M5 13l4 4L19 7"/>
                                     </svg>
                                     Business Districts: Kızılay, Çankaya
                                 </li>
                                 <li className="flex items-center">
-                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor"
+                                         viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                              d="M5 13l4 4L19 7"/>
                                     </svg>
                                     Shopping Areas: Tunalı Hilmi, Bahçelievler
                                 </li>
                                 <li className="flex items-center">
-                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+                                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor"
+                                         viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                              d="M5 13l4 4L19 7"/>
                                     </svg>
                                     Transportation Hubs: AŞTİ, Train Station
                                 </li>
