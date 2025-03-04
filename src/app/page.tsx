@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {useRouter} from 'next/navigation';
 
+
 interface FeatureCardProps {
     title: string;
     description: string;
@@ -31,6 +32,8 @@ export default function Home() {
             setUserName(userData.first_name || 'User');
         }
     }, []);
+
+    const { basePath } = useRouter();
 
     const handleLogout = () => {
         localStorage.removeItem('user');
