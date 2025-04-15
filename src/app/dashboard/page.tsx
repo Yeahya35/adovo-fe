@@ -13,11 +13,12 @@ export default function Dashboard() {
         // Check if user is logged in
         const user = localStorage.getItem('user');
         if (!user) {
-            router.push('/login');
+            // router.push('/login');
             return;
         }
 
         const userData = JSON.parse(user);
+        userData.first_name = "yahya";
         setUserName(userData.first_name || 'User');
     }, [router]);
 
