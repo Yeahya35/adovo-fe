@@ -18,6 +18,14 @@ interface StepProps {
     description: string;
 }
 
+interface ImageCardProps {
+    image: string;
+    title: string;
+    status: string;
+    onEdit: () => void;
+    onDelete: () => void;
+}
+
 export default function Home() {
     const router = useRouter();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -149,6 +157,62 @@ export default function Home() {
                                         className="block w-full py-3 px-4 bg-gray-100 text-black rounded-xl text-center font-medium hover:bg-gray-200 transition-colors">
                                         View Analytics
                                     </button>
+                                </div>
+                            </div>
+
+                            {/* Image Cards Grid */}
+                            <div className="col-span-1 md:col-span-2 lg:col-span-3">
+                                <div className="bg-white rounded-2xl shadow-xl p-6 border border-yellow-100">
+                                    <h2 className="text-xl font-semibold mb-4 text-black">Your Advertisements</h2>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                                        {/* Sample Image Cards - You can map through your actual data here */}
+                                        <div className="relative group overflow-hidden rounded-lg">
+                                            <div className="aspect-w-16 aspect-h-9">
+                                                <Image
+                                                    src="/sample-ad-1.jpg"
+                                                    alt="Advertisement 1"
+                                                    layout="fill"
+                                                    objectFit="cover"
+                                                    className="transform group-hover:scale-110 transition-transform duration-200"
+                                                />
+                                            </div>
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                                <div className="absolute bottom-0 left-0 right-0 p-4">
+                                                    <h3 className="text-white font-semibold truncate">Campaign Title</h3>
+                                                    <div className="flex items-center justify-between mt-2">
+                                                        <span className="text-yellow-400 text-sm">Active</span>
+                                                        <div className="flex space-x-2">
+                                                            <button className="p-1.5 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
+                                                                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                                </svg>
+                                                            </button>
+                                                            <button className="p-1.5 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
+                                                                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Add more image cards as needed */}
+                                        {/* You can create a separate ImageCard component and map through your data */}
+                                        {/* Example of how to map through data:
+                                        {advertisements.map((ad) => (
+                                            <ImageCard
+                                                key={ad.id}
+                                                image={ad.image}
+                                                title={ad.title}
+                                                status={ad.status}
+                                                onEdit={() => handleEdit(ad.id)}
+                                                onDelete={() => handleDelete(ad.id)}
+                                            />
+                                        ))}
+                                        */}
+                                    </div>
                                 </div>
                             </div>
 
@@ -548,5 +612,45 @@ const Step = ({number, title, description}: StepProps) => (
         </div>
         <h3 className="text-xl font-semibold mb-2 text-black">{title}</h3>
         <p className="text-black">{description}</p>
+    </div>
+);
+
+const ImageCard = ({ image, title, status, onEdit, onDelete }: ImageCardProps) => (
+    <div className="relative group overflow-hidden rounded-lg">
+        <div className="aspect-w-16 aspect-h-9">
+            <Image
+                src={image}
+                alt={title}
+                layout="fill"
+                objectFit="cover"
+                className="transform group-hover:scale-110 transition-transform duration-200"
+            />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <div className="absolute bottom-0 left-0 right-0 p-4">
+                <h3 className="text-white font-semibold truncate">{title}</h3>
+                <div className="flex items-center justify-between mt-2">
+                    <span className="text-yellow-400 text-sm">{status}</span>
+                    <div className="flex space-x-2">
+                        <button 
+                            onClick={onEdit}
+                            className="p-1.5 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
+                        >
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                            </svg>
+                        </button>
+                        <button 
+                            onClick={onDelete}
+                            className="p-1.5 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
+                        >
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 );
