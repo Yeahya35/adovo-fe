@@ -1,10 +1,11 @@
 'use client';
 
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import {useRouter} from "next/navigation";
+import {useState} from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { LoginForm } from "@/components/login-form";
+import {LoginForm} from "@/components/login-form";
+import {login} from "@/app/services/authService";
 
 export default function LoginPage() {
     const router = useRouter();
@@ -19,27 +20,18 @@ export default function LoginPage() {
         setIsLoading(true);
 
         try {
-            const response = await fetch('/api/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ username, password }),
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                // throw new Error(data.message || 'Invalid email or password');
-            }
+            // Use the login service from the service layer
+            const data = await login(username, password);
 
             // Store token
             localStorage.setItem('token', data.token);
 
             // Redirect to dashboard
             router.push('/dashboard');
-        } catch (error : any)  {
-            setError(error.message);
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                setError(error.message); // Handle error from the service layer
+            }
         } finally {
             setIsLoading(false);
         }
@@ -50,7 +42,8 @@ export default function LoginPage() {
             <div className="flex flex-col gap-4 p-6 md:p-10">
                 <div className="flex justify-center gap-2 md:justify-start align-middle">
                     <div className="flex items-center gap-2 font-medium">
-                        <Link href="/" className="flex justify-center transform hover:scale-105 transition-transform duration-200">
+                        <Link href="/"
+                              className="flex justify-center transform hover:scale-105 transition-transform duration-200">
                             <Image
                                 src="/assets/img/adovo-logo.png"
                                 alt="ADOVO Logo"
