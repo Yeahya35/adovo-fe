@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import {useRouter} from 'next/navigation';
+import { PricingCard } from '@/components/cards/pricing';
 
 
 interface FeatureCardProps {
@@ -47,6 +48,15 @@ export default function Home() {
         setIsLoggedIn(false);
         router.push('/');
     }
+
+
+    const handleGetStarted = () => {
+        router.push('/login');
+    };
+
+    const handleContactSales = () => {
+        router.push('/contact');
+    };
 
     const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -548,6 +558,13 @@ export default function Home() {
                                 </li>
                             </ul>
                         </div>
+                    </div>
+
+                    <div className="mt-16 gap-8">
+                            <PricingCard
+                            handleContactSales={handleContactSales}
+                            handleGetStarted={handleGetStarted}
+                            ></PricingCard>
                     </div>
                 </div>
             </section>
