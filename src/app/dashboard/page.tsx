@@ -11,13 +11,13 @@ export default function Dashboard() {
 
     useEffect(() => {
         // Check if user is logged in
-        const user = localStorage.getItem('user');
-        if (!user) {
+        const username = localStorage.getItem('username');
+        if (!username) {
             router.push('/login');
             return;
         }
 
-        const userData = JSON.parse(user);
+        const userData = JSON.parse(username);
         setUserName(userData.first_name || 'User');
     }, [router]);
 

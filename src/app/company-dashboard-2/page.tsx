@@ -65,12 +65,22 @@ function FileCard({ title, metadata, thumbnail }: { title: string; metadata: str
 }
 
 export default function FileManager() {
+
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
     return (
         <div className="flex h-screen bg-white">
             {/* Sidebar */}
             <div className="w-64 border-r bg-white">
                 <div className="p-4">
-                    <h1 className="text-xl font-bold">Showpad</h1>
+                    <Link href="/dashboard">
+                        <Image
+                            src={`${basePath}/assets/img/adovo-logo.png`}
+                            alt="ADOVO Logo"
+                            width={40}
+                            height={40}
+                        />
+                    </Link>
                 </div>
                 <nav className="space-y-1 px-2">
                     <NavItem href="#" icon={<LayoutGrid className="h-4 w-4" />} active>
