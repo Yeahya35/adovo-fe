@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { Modal } from '@/components/ui/modal';
+import { NewCampaignForm } from '@/components/campaign/new-campaign-form';
 
 
 interface ImageCardProps {
@@ -18,6 +20,7 @@ interface ImageCardProps {
 export default function Dashboard() {
     const router = useRouter();
     const [userName, setUserName] = useState('');
+    const [isCampaignModalOpen, setIsCampaignModalOpen] = useState(false);
 
     useEffect(() => {
         // Check if user is logged in
@@ -73,12 +76,12 @@ export default function Dashboard() {
                     <div className="bg-white rounded-2xl shadow-xl p-6 border border-yellow-100">
                         <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
                         <div className="space-y-4">
-                            <Link
-                                href="/region-select"
+                            <button
+                                onClick={() => setIsCampaignModalOpen(true)}
                                 className="block w-full py-3 px-4 bg-yellow-400 text-black rounded-xl text-center font-medium hover:bg-yellow-500 transition-colors"
                             >
                                 Create New Campaign
-                            </Link>
+                            </button>
                             <button
                                 className="block w-full py-3 px-4 bg-gray-100 text-gray-700 rounded-xl text-center font-medium hover:bg-gray-200 transition-colors">
                                 View Analytics
@@ -171,6 +174,15 @@ export default function Dashboard() {
 
                 </div>
             </div>
+
+            {/* Campaign Form Modal */}
+            <Modal
+                isOpen={isCampaignModalOpen}
+                onClose={() => setIsCampaignModalOpen(false)}
+                title="Create New Campaign"
+            >
+                <NewCampaignForm onClose={() => setIsCampaignModalOpen(false)} />
+            </Modal>
         </div>
     );
 }
