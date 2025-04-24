@@ -82,10 +82,12 @@ export default function Dashboard() {
                             >
                                 Create New Campaign
                             </button>
-                            <button
-                                className="block w-full py-3 px-4 bg-gray-100 text-gray-700 rounded-xl text-center font-medium hover:bg-gray-200 transition-colors">
+                            <Link
+                                href="/company-dashboard/analytics"
+                                className="block w-full py-3 px-4 bg-gray-100 text-gray-700 rounded-xl text-center font-medium hover:bg-gray-200 transition-colors"
+                            >
                                 View Analytics
-                            </button>
+                            </Link>
                         </div>
                     </div>
 
