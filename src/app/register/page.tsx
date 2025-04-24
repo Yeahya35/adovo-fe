@@ -4,6 +4,7 @@ import {useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/navigation';
+import {registerUser} from "@/app/services/authService";
 
 export default function Register() {
     const router = useRouter();
@@ -32,11 +33,26 @@ export default function Register() {
 
         setIsLoading(true);
         try {
-            // TODO: Implement registration
-            console.log('Registration data:', formData);
-            router.push('/dashboard');
-        } catch (err) {
-            setError('Registration failed. Please try again.');
+            const payload = {
+                username: formData.email, // assuming username = email
+                email: formData.email,
+                password: formData.password,
+                first_name: formData.firstName,
+                last_name: formData.lastName,
+                company_name: formData.companyName,
+                phone_number: formData.phoneNumber,
+                address: formData.address,
+            };
+
+            await registerUser(payload);
+            router.push('/dashboard'); // success, redirect
+
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError('Registration failed. Please try again.');
+            }
         } finally {
             setIsLoading(false);
         }
