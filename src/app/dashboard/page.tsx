@@ -22,6 +22,7 @@ export default function Dashboard() {
 
     const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-white to-yellow-50">
             {/* Navigation */}
@@ -39,6 +40,12 @@ export default function Dashboard() {
                             </Link>
                         </div>
                         <div className="flex items-center space-x-4">
+                            <Link 
+                                href="/pricing" 
+                                className="text-sm font-medium text-yellow-600 hover:text-yellow-700 px-3 py-2 rounded-lg hover:bg-yellow-50 transition-colors"
+                            >
+                                Pricing
+                            </Link>
                             <span className="text-gray-700">Welcome, {userName}</span>
                             <button
                                 onClick={() => {
@@ -66,7 +73,7 @@ export default function Dashboard() {
                                 className="block w-full py-3 px-4 bg-yellow-400 text-black rounded-xl text-center font-medium hover:bg-yellow-500 transition-colors"
                             >
                                 Create New Campaign
-                            </Link>
+                            </Link> 
                             <button
                                 className="block w-full py-3 px-4 bg-gray-100 text-gray-700 rounded-xl text-center font-medium hover:bg-gray-200 transition-colors">
                                 View Analytics
@@ -111,6 +118,9 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
+
+                {/* Pricing Section */}
+              
             </div>
         </div>
     );

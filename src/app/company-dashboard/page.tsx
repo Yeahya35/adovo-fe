@@ -1,10 +1,11 @@
 'use client';
 
-import React, {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import {useRouter} from 'next/navigation';
-import FileUpload from "@/components/ui/fileUpload";
+import { useRouter } from 'next/navigation';
+import { Modal } from '@/components/ui/modal';
+import { NewCampaignForm } from '@/components/campaign/new-campaign-form';
 
 
 interface ImageCardProps {
@@ -19,6 +20,7 @@ interface ImageCardProps {
 export default function Dashboard() {
     const router = useRouter();
     const [userName, setUserName] = useState('');
+    const [isCampaignModalOpen, setIsCampaignModalOpen] = useState(false);
 
     useEffect(() => {
         // Check if user is logged in
@@ -74,12 +76,12 @@ export default function Dashboard() {
                     <div className="bg-white rounded-2xl shadow-xl p-6 border border-yellow-100">
                         <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
                         <div className="space-y-4">
-                            <Link
-                                href="/region-select"
+                            <button
+                                onClick={() => setIsCampaignModalOpen(true)}
                                 className="block w-full py-3 px-4 bg-yellow-400 text-black rounded-xl text-center font-medium hover:bg-yellow-500 transition-colors"
                             >
                                 Create New Campaign
-                            </Link>
+                            </button>
                             <button
                                 className="block w-full py-3 px-4 bg-gray-100 text-gray-700 rounded-xl text-center font-medium hover:bg-gray-200 transition-colors">
                                 View Analytics
@@ -99,7 +101,7 @@ export default function Dashboard() {
                                 Start your first campaign
                                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                          d="M9 5l7 7-7 7"/>
+                                        d="M9 5l7 7-7 7" />
                                 </svg>
                             </Link>
                         </div>
@@ -142,29 +144,20 @@ export default function Dashboard() {
                                             className="transform group-hover:scale-110 transition-transform duration-200"
                                         />
                                     </div>
-                                    <div
-                                        className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                                         <div className="absolute bottom-0 left-0 right-0 p-4">
                                             <h3 className="text-white font-semibold truncate">Campaign Title</h3>
                                             <div className="flex items-center justify-between mt-2">
                                                 <span className="text-yellow-400 text-sm">Active</span>
                                                 <div className="flex space-x-2">
-                                                    <button
-                                                        className="p-1.5 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
-                                                        <svg className="w-4 h-4 text-white" fill="none"
-                                                             stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path strokeLinecap="round" strokeLinejoin="round"
-                                                                  strokeWidth="2"
-                                                                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                                                    <button className="p-1.5 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
+                                                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                                         </svg>
                                                     </button>
-                                                    <button
-                                                        className="p-1.5 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
-                                                        <svg className="w-4 h-4 text-white" fill="none"
-                                                             stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path strokeLinecap="round" strokeLinejoin="round"
-                                                                  strokeWidth="2"
-                                                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                                    <button className="p-1.5 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
+                                                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                         </svg>
                                                     </button>
                                                 </div>
@@ -173,25 +166,29 @@ export default function Dashboard() {
                                     </div>
                                 </div>
 
-                                <FileUpload></FileUpload>
 
                             </div>
-
-
                         </div>
-
-
                     </div>
 
 
                 </div>
             </div>
+
+            {/* Campaign Form Modal */}
+            <Modal
+                isOpen={isCampaignModalOpen}
+                onClose={() => setIsCampaignModalOpen(false)}
+                title="Create New Campaign"
+            >
+                <NewCampaignForm onClose={() => setIsCampaignModalOpen(false)} />
+            </Modal>
         </div>
     );
 }
 
 // Add this component definition at the bottom of your file with other components
-const ImageCard = ({image, title, status, onEdit, onDelete}: ImageCardProps) => (
+const ImageCard = ({ image, title, status, onEdit, onDelete }: ImageCardProps) => (
     <div className="relative group overflow-hidden rounded-lg">
         <div className="aspect-w-16 aspect-h-9">
             <Image
@@ -202,8 +199,7 @@ const ImageCard = ({image, title, status, onEdit, onDelete}: ImageCardProps) => 
                 className="transform group-hover:scale-110 transition-transform duration-200"
             />
         </div>
-        <div
-            className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
             <div className="absolute bottom-0 left-0 right-0 p-4">
                 <h3 className="text-white font-semibold truncate">{title}</h3>
                 <div className="flex items-center justify-between mt-2">
@@ -214,8 +210,7 @@ const ImageCard = ({image, title, status, onEdit, onDelete}: ImageCardProps) => 
                             className="p-1.5 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
                         >
                             <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                      d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                             </svg>
                         </button>
                         <button
@@ -223,8 +218,7 @@ const ImageCard = ({image, title, status, onEdit, onDelete}: ImageCardProps) => 
                             className="p-1.5 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
                         >
                             <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                             </svg>
                         </button>
                     </div>
