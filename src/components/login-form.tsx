@@ -9,6 +9,7 @@ interface LoginFormProps extends React.ComponentPropsWithoutRef<"form"> {
     password: string;
     setPassword: (password: string) => void;
     handleSubmit: (e: React.FormEvent) => void;
+    navigateToRegister: (e: React.FormEvent) => void;
     isLoading: boolean;
 }
 
@@ -17,11 +18,13 @@ export function LoginForm({
                               username,
                               setUsername,
                               password,
+                              navigateToRegister,
                               setPassword,
                               handleSubmit,
                               isLoading,
                               ...props
                           }: LoginFormProps) {
+
     return (
         <form className={cn("flex flex-col gap-6", className)} onSubmit={handleSubmit} {...props}>
             <div className="flex flex-col items-center gap-2 text-center">
@@ -86,7 +89,9 @@ export function LoginForm({
             </div>
             <div className="text-center text-sm">
                 Don&apos;t have an account?{" "}
-                <a href="#" className="underline underline-offset-4">
+                <a className="underline underline-offset-4"
+                   onClick={navigateToRegister}
+                >
                     Sign up
                 </a>
             </div>

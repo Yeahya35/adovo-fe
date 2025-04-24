@@ -62,6 +62,7 @@ export default function LoginPage() {
                             password={password}
                             setPassword={setPassword}
                             handleSubmit={handleSubmit}
+                            navigateToRegister={() => router.push('/register')}
                             isLoading={isLoading}
                         />
                         {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
