@@ -1,4 +1,4 @@
-'use client';
+ 'use client';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -6,10 +6,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RegionSelector } from '@/components/campaign/region-selector';
 import { MediaUpload } from '@/components/campaign/media-upload';
+ import {createAdvertisement} from "@/app/services/advertismentService";
 
 interface CampaignFormData {
   districts: string[];
-  neighborhoods: string[];
+  neighborhoods: number[];
   mediaFiles: File[];
 }
 
@@ -22,7 +23,7 @@ export default function NewCampaignPage() {
     mediaFiles: [],
   });
 
-  const handleRegionSelection = (districts: string[], neighborhoods: string[]) => {
+  const handleRegionSelection = (districts: string[], neighborhoods: number[]) => {
     setFormData(prev => ({
       ...prev,
       districts,
@@ -49,13 +50,40 @@ export default function NewCampaignPage() {
     setStep(prev => prev + 1);
   };
 
+  // const handleSubmit = async () => {
+  //   try {
+  //     // TODO: Implement campaign submission logic
+  //     console.log('Submitting campaign:', formData);
+  //     router.push('/company-dashboard');
+  //   } catch (error) {
+  //     console.error('Error submitting campaign:', error);
+  //   }
+  // };
+  //
+
   const handleSubmit = async () => {
     try {
-      // TODO: Implement campaign submission logic
-      console.log('Submitting campaign:', formData);
+      if (formData.mediaFiles.length === 0) {
+        alert('Please upload at least one media file');
+        return;
+      }
+
+      // Assume companyId comes from auth or token
+      const companyId = 1;
+
+      await createAdvertisement({
+        name: 'LED Campaign',
+        description: 'Outdoor LED Display Ads',
+        display_duration: 10,
+        file: formData.mediaFiles[0],
+        companyId,
+        regionIds: formData.neighborhoods,
+      });
+
       router.push('/company-dashboard');
     } catch (error) {
       console.error('Error submitting campaign:', error);
+      alert('Campaign submission failed');
     }
   };
 

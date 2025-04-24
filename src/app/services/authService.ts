@@ -51,6 +51,7 @@ export const login = async (username: string, password: string) => {
         console.log(data);
         if (data.username) {
             localStorage.setItem('username', data.username);
+            localStorage.setItem('userId', data.id);
         }
         if (!response.ok) {
             throw new Error(data.message || 'Invalid credentials');

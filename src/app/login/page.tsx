@@ -27,7 +27,7 @@ export default function LoginPage() {
             localStorage.setItem('token', data.token);
 
             // Redirect to dashboard
-            router.push('/dashboard');
+            router.push('/company-dashboard');
         } catch (error: unknown) {
             if (error instanceof Error) {
                 setError(error.message); // Handle error from the service layer
