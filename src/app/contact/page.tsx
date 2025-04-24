@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import {useRouter} from "next/navigation";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -13,6 +14,9 @@ export default function Contact() {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const router = useRouter();
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,6 +51,10 @@ export default function Contact() {
               <Link
                 href="/login"
                 className="px-6 py-2 bg-yellow-400 text-black rounded-full hover:bg-yellow-500 transition-colors font-medium"
+                onClick={() => {
+                  localStorage.clear();
+                  router.push('/register');
+                }}
               >
                 Sign in
               </Link>

@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import {useRouter} from "next/navigation";
 
 interface PricingFeature {
     included: boolean;
@@ -67,6 +68,9 @@ const pricingTiers: PricingTier[] = [
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export default function StartAdvertising() {
+
+    const router = useRouter();
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-white to-yellow-50">
             {/* Navigation */}
@@ -86,6 +90,10 @@ export default function StartAdvertising() {
                             <Link
                                 href="/login"
                                 className="px-6 py-2 text-gray-700 hover:text-gray-900 font-medium"
+                                onClick={() => {
+                                    localStorage.clear();
+                                    router.push('/register');
+                                }}
                             >
                                 Sign in
                             </Link>

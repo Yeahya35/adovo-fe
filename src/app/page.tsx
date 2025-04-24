@@ -45,6 +45,7 @@ export default function Home() {
 
     const handleLogout = () => {
         localStorage.removeItem('user');
+        localStorage.clear();
         setIsLoggedIn(false);
         router.push('/');
     }

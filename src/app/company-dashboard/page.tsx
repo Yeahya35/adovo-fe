@@ -81,6 +81,7 @@ export default function Dashboard() {
                             <button
                                 onClick={() => {
                                     localStorage.removeItem('user');
+                                    localStorage.clear();
                                     router.push('/login');
                                 }}
                                 className="text-sm text-gray-700 hover:text-gray-900"
