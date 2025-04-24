@@ -17,8 +17,7 @@ export default function Dashboard() {
             return;
         }
 
-        const userData = JSON.parse(username);
-        setUserName(userData.first_name || 'User');
+        setUserName(username || 'Guest');
     }, [router]);
 
     const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";

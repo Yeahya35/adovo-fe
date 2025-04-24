@@ -7,7 +7,8 @@ import { cn } from "@/lib/utils"
 import { Bell, Grid, LayoutGrid, Plus, Search } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import type React from "react" // Import React
+import type React from "react"
+import FileUpload from "@/components/ui/fileUpload"; // Import React
 
 interface NavItemProps {
     href: string
@@ -210,6 +211,7 @@ export default function FileManager() {
                         <FileCard title="Q4 Sales Deck" metadata="Shared folder • 8 presentations" thumbnail="/placeholder.svg" />
                         <FileCard title="Product Videos" metadata="Shared folder • 5 videos" thumbnail="/placeholder.svg" />
                         <FileCard title="ROI Calculator" metadata="Shared file • 1 Excel" thumbnail="/placeholder.svg" />
+                        <FileUpload></FileUpload>
                     </div>
                 </div>
             </div>
