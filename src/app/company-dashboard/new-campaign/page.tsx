@@ -76,6 +76,7 @@ export default function NewCampaignPage() {
         description: 'Outdoor LED Display Ads',
         display_duration: 10,
         file: formData.mediaFiles[0],
+        region_name: 'Bilkent',
         companyId,
         regionIds: formData.neighborhoods,
       });
@@ -127,4 +128,4 @@ export default function NewCampaignPage() {
       </Card>
     </div>
   );
-} 
+}

@@ -77,11 +77,15 @@ export function NewCampaignForm({onClose, onSubmitSuccess}: NewCampaignFormProps
 
             const companyId = 1; // replace this with actual user context if needed
 
+            console.log(formData)
+
+            const regionName = formData.districts?.[0] || 'unknown';
             const result = await createAdvertisement({
                 name: 'LED Campaign',
                 description: 'Outdoor LED Display Ads',
                 display_duration: 10,
-                file: formData.mediaFiles[0], // first file only
+                file: formData.mediaFiles[0],
+                region_name: regionName,
                 companyId,
                 regionIds: formData.neighborhoods,
             });
@@ -291,4 +295,4 @@ export function NewCampaignForm({onClose, onSubmitSuccess}: NewCampaignFormProps
             </div>
         </div>
     );
-} 
+}

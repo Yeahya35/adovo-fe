@@ -5,6 +5,7 @@ export interface AdvertisementForm {
     description: string;
     display_duration: number;
     file: File;
+    region_name: string;
     companyId: number; // or string, depending on backend
     regionIds: number[];
 }
@@ -15,12 +16,14 @@ export const createAdvertisement = async ({
                                               display_duration,
                                               file,
                                               regionIds,
+                                              region_name
                                           }: AdvertisementForm) => {
     try {
         const formData = new FormData();
         let userId = localStorage.getItem('userId');
         formData.append('name', name);
         formData.append('description', description);
+        formData.append('region_name', region_name);
         formData.append('display_duration', display_duration.toString());
         if (userId == null) {
             userId = "3";
